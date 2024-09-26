@@ -77,7 +77,7 @@ const SkillsComponent = () => {
           backgroundColor: "rgba(0, 0, 0, 0.7)",
           padding: { xs: "20px", md: "40px" },
           borderRadius: "12px",
-          maxWidth: { xs: "400px", sm: "600px", md: "800px" },
+          maxWidth: { xs: "330px", sm: "600px", md: "800px" },
           width: "100%",
           textAlign: "center",
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.5)",
