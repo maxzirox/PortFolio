@@ -90,7 +90,7 @@ const IndexComponent = () => {
             whiteSpace: "pre",
             overflow: "hidden",
             animation: `${typing} 4s steps(20) 1 normal both, ${blink} 0.75s step-end infinite`,
-            fontSize: { xs: "25px", sm: "35px", md: "56px" },
+            fontSize: { xs: "20px", sm: "35px", md: "56px" },
             textAlign: "center",
             marginTop: "30px",
             marginBottom: "30px",
