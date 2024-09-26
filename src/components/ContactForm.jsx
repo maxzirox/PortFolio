@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Box, Typography, TextField, Button, Modal, IconButton } from '@mui/material';
 import { keyframes } from '@mui/system';
-import { FaGithub, FaStackOverflow, FaDev, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaDev, FaLinkedin } from 'react-icons/fa';
 import emailjs from 'emailjs-com';
 
 // Animaciones
