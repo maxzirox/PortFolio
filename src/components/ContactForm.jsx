@@ -49,10 +49,10 @@ const ContactForm = () => {
 
     try {
       await emailjs.send(
-        'tu_service_id',
-        'tu_template_id',
+        'service_rjvrxzt',
+        'service_rjvrxzt',
         formData,
-        'tu_user_id'
+        'XqS_ny61djdndtA6W'
       );
       setEmailSent(true);
     } catch (error) {
