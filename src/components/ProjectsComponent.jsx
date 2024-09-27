@@ -35,7 +35,7 @@ const ProjectsComponent = () => {
     {
       title: 'Proyecto WellnessApp',
       description: 'Proyecto ecommerce creado con react, utilizando material-UI, react-router-dom, context, sweet alert y swiper. Conectado una base de datos en Firebase para la persistencia de datos.',
-      url: 'https://wellnessapp.onrender.com',
+      url: 'https://github.com/maxzirox/WellnessApp',
       image: 'https://firebasestorage.googleapis.com/v0/b/wellnesgym-47cea.appspot.com/o/wellnesGym.gif?alt=media&token=ea58bc73-0c6e-4612-b47e-1d1eabeb941b',
     },
     // Agrega más proyectos aquí
