@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Box, Typography, Grid, Paper, Button } from "@mui/material";
 import { keyframes } from "@mui/system";
 import { motion } from "framer-motion";
+import { TitlePage } from "../partials/TitlePage";
 
 // Animaciones
 const fadeIn = keyframes`
@@ -61,69 +62,8 @@ const ProjectsComponent = () => {
   }, []);
 
   return (
-    <Box
-      sx={{
-        position: "relative",
-        minHeight: "100vh",
-        width: "100vw",
-        overflow: "hidden",
-        backgroundImage:
-          "url('https://www.hostingplus.com.co/wp-content/uploads/2021/11/editor_codigo.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: 0,
-        padding: 0,
-        boxSizing: "border-box",
-      }}
-    >
-      <Box
-        ref={titleRef}
-        sx={{
-          position: "relative",
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
-          padding: { xs: "20px", md: "40px" },
-          borderRadius: "12px",
-          maxWidth: { xs: "330px",sm: "600px", md: "800px"},
-          width: "100%",
-          textAlign: "center",
-          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.5)",
-          marginTop: { xs: '90px', sm: '50px', md: '150px', lg: '100px' },
-          marginLeft: "20px",
-          marginRight: "20px",
-        }}
-      >
-        {/* Título animado en formato JSON */}
-        <Typography
-          variant="h1"
-          component="div"
-          sx={{
-            fontFamily: "monospace",
-            fontWeight: "bold",
-            color: "white",
-            borderRight: "2px solid white",
-            whiteSpace: "pre",
-            overflow: "hidden",
-            animation: `${typing} 4s steps(20) 1 normal both, ${blink} 0.75s step-end infinite`,
-            fontSize: { xs: "35px", sm: "35px", md: "56px" },
-            textAlign: "center",
-            marginTop: "30px",
-            marginBottom: "30px",
-            paddingRight: "0px",
-            "&::before": {
-              content: '"<"',
-            },
-            "&::after": {
-              content: '"/>"',
-            },
-          }}
-        >
-          MisProyectos
-        </Typography>
-      </Box>
+    <>
+      <TitlePage Title={"MyProjects"} />
 
       <Box
         ref={titleRef}
@@ -149,6 +89,19 @@ const ProjectsComponent = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "1.5rem",
+                      marginBottom: "20px",
+                      textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Sombra en el texto
+                      zIndex: 2, // Asegura que el texto esté por encima del fondo
+                    }}
+                  >
+                    {project.title}
+                  </Typography>
                 <Paper
                   elevation={3}
                   sx={{
@@ -183,43 +136,31 @@ const ProjectsComponent = () => {
                   }}
                 >
                   <Typography
-                    variant="h5"
-                    gutterBottom
-                    sx={{
-                      fontWeight: "bold",
-                      fontSize: "1.5rem",
-                      marginBottom: "20px",
-                      textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Sombra en el texto
-                      zIndex: 2, // Asegura que el texto esté por encima del fondo
-                    }}
-                  >
-                    {project.title}
-                  </Typography>
-                  <Typography
                     variant="body1"
                     gutterBottom
                     sx={{
-                      fontWeight: "medium",
+                      color: 'aliceblue',
                       fontSize: "1.3rem",
-                      fontWeight: "Bond",
+                      fontWeight: "Bold",
                       textAlign: "justify",
-                      marginTop: "60px",
+                      marginTop: "30px",
                       marginLeft: "25px",
                       marginRight: "25px",
-                      textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Sombra en el texto
+                      textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)', // Sombra en el texto
                       zIndex: 2, // Asegura que el texto esté por encima del fondo
                     }}
                   >
                     {project.description}
                   </Typography>
-                  <Button
+                </Paper>
+                <Button
                     variant="outlined"
                     sx={{
                       //backgroundColor: "#1976d2",
                       color: "white",
                       borderRadius: "8px",
                       padding: "10px 20px",
-                      margin: "60px 30px 0px 30px",
+                      margin: "0px 30px 0px 30px",
                       fontWeight: "bold",
                       fontSize: "17px",
                       textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
@@ -235,13 +176,12 @@ const ProjectsComponent = () => {
                   >
                     Ver proyecto
                   </Button>
-                </Paper>
               </motion.div>
             </Grid>
           ))}
         </Grid>
       </Box>
-    </Box>
+    </>
   );
 };
 

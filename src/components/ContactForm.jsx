@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { Box, Typography, TextField, Button, Modal, IconButton } from '@mui/material';
-import { keyframes } from '@mui/system';
+import { Box, Typography, TextField, Button, Modal, IconButton, keyframes } from '@mui/material';
 import { FaGithub, FaDev, FaLinkedin } from 'react-icons/fa';
 import emailjs from 'emailjs-com';
+import { TitlePage } from '../partials/TitlePage';
 
-// Animaciones
 const typing = keyframes`
   from { width: 0; }
   to { width: 100%; }
@@ -14,7 +13,6 @@ const blink = keyframes`
   from, to { border-color: transparent; }
   50% { border-color: white; }
 `;
-
 // Component ContactForm
 const ContactForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -50,7 +48,7 @@ const ContactForm = () => {
     try {
       await emailjs.send(
         'service_rjvrxzt',
-        'service_rjvrxzt',
+        'template_qlmvjkv',
         formData,
         'XqS_ny61djdndtA6W'
       );
@@ -60,70 +58,12 @@ const ContactForm = () => {
     }
     setModalOpen(true);
     setIsSubmitted(true);
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        minHeight: '100vh',
-        width: '100vw',
-        overflow: 'hidden',
-        backgroundImage: 'url("https://www.hostingplus.com.co/wp-content/uploads/2021/11/editor_codigo.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 0,
-        padding: 0,
-        boxSizing: 'border-box',
-      }}
-    >
-      <Box
-        sx={{
-          position: 'relative',
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          padding: { xs: '20px', md: '40px' },
-          borderRadius: '12px',
-          maxWidth: { xs: '330px', sm: '600px', md: '800px' },
-          width: '100%',
-          textAlign: 'center',
-          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.5)',
-          marginTop: { xs: '90px', sm: '50px', md: '150px', lg: '100px' },
-          marginLeft: '20px',
-          marginRight: '20px',
-        }}
-      >
-        {/* Título animado en formato JSON */}
-        <Typography
-          variant="h1"
-          component="div"
-          sx={{
-            fontFamily: 'monospace',
-            fontWeight: 'bold',
-            color: 'white',
-            borderRight: '2px solid white',
-            whiteSpace: 'pre',
-            overflow: 'hidden',
-            animation: `${typing} 4s steps(20) 1 normal both, ${blink} 0.75s step-end infinite`,
-            fontSize: { xs: '35px', sm: '35px', md: '56px' },
-            textAlign: 'center',
-            marginTop: '30px',
-            marginBottom: '30px',
-            paddingRight: '0px',
-            "&::before": {
-              content: '"<"',
-            },
-            "&::after": {
-              content: '"/>"',
-            },
-          }}
-        >
-          ContactForm
-        </Typography>
-      </Box>
+    <>
+      <TitlePage Title={'ContactForm'} />
 
       {/* Formulario */}
       <Box
@@ -222,16 +162,17 @@ const ContactForm = () => {
             padding: '40px',
             borderRadius: '12px',
             textAlign: 'center',
+            maxWidth: { xs: '310px', sm: '600px', md: '800px' },
           }}
         >
           <Typography
             ref={modalMessageRef}
-            variant="h4"
+            variant="h6"
             sx={{
               color: 'white',
               fontFamily: 'monospace',
               fontWeight: 'bold',
-              fontSize: '30px',
+              fontSize: { xs: '15px', sm: '35px', md: '6px' },
               textAlign: 'center',
               whiteSpace: 'pre',
               overflow: 'hidden',
@@ -243,8 +184,7 @@ const ContactForm = () => {
           </Typography>
         </Box>
       </Modal>
-    </Box>
-  );
-};
+    </>
+)};
 
 export default ContactForm;

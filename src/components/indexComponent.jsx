@@ -42,26 +42,7 @@ const IndexComponent = () => {
   }, []);
 
   return (
-<Box
-  sx={{
-    position: "relative", // Aseguramos que sea relativo al viewport.
-    minHeight: "100vh", // Ocupa toda la altura de la ventana.
-    width: "100vw", // Ocupa todo el ancho de la ventana.
-    overflow: "hidden", // Oculta cualquier desbordamiento hacia los lados.
-    backgroundImage:
-      "url('https://www.hostingplus.com.co/wp-content/uploads/2021/11/editor_codigo.jpg')",
-    backgroundSize: "cover", // Asegura que la imagen cubra todo el contenedor.
-    backgroundPosition: "center",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 0, // Elimina cualquier margen.
-    padding: 0, // Elimina cualquier padding que pueda causar desbordamiento.
-    boxSizing: "border-box", // Asegura que el padding se incluya dentro del tamaño del box.
-  }}
->
-
+<>
     <Box
         ref={titleRef}
         sx={{
@@ -141,7 +122,7 @@ const IndexComponent = () => {
           Como desarrollador full stack, diseño y construyo aplicaciones web completas desde el front-end hasta el back-end. Utilizo tecnologías modernas como React y React Native para crear interfaces de usuario interactivas, mientras que Node.js y bases de datos como MySQL o MongoDB me permiten manejar servidores y datos de manera eficiente. Soy capaz de integrar sistemas, optimizar el rendimiento y garantizar una experiencia de usuario fluida, siempre buscando aprender nuevas herramientas y técnicas para mejorar la calidad de mi código y los proyectos en los que participo.
         </Typography>
       </Box>
-    </Box>
+    </>
   );
 };
 

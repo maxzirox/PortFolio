@@ -3,6 +3,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import { keyframes } from "@mui/system";
 import { motion } from "framer-motion";
 import { FaJava, FaJsSquare, FaNodeJs, FaReact, FaHtml5, FaCss3Alt } from 'react-icons/fa';
+import { TitlePage } from "../partials/TitlePage";
 
 // Animaciones
 const typing = keyframes`
@@ -51,69 +52,8 @@ const SkillsComponent = () => {
   }, []);
 
   return (
-    <Box
-      sx={{
-        position: "relative",
-        minHeight: "100vh",
-        width: "100vw",
-        overflow: "hidden",
-        backgroundImage:
-          "url('https://www.hostingplus.com.co/wp-content/uploads/2021/11/editor_codigo.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: 0,
-        padding: 0,
-        boxSizing: "border-box",
-      }}
-    >
-      <Box
-        ref={titleRef}
-        sx={{
-          position: "relative",
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
-          padding: { xs: "20px", md: "40px" },
-          borderRadius: "12px",
-          maxWidth: { xs: "330px", sm: "600px", md: "800px" },
-          width: "100%",
-          textAlign: "center",
-          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.5)",
-          marginTop: { xs: "90px", sm: "50px", md: "150px", lg: "100px" },
-          marginLeft: "20px",
-          marginRight: "20px",
-        }}
-      >
-        {/* Título animado en formato JSON */}
-        <Typography
-          variant="h1"
-          component="div"
-          sx={{
-            fontFamily: "monospace",
-            fontWeight: "bold",
-            color: "white",
-            borderRight: "2px solid white",
-            whiteSpace: "pre",
-            overflow: "hidden",
-            animation: `${typing} 4s steps(20) 1 normal both, ${blink} 0.75s step-end infinite`,
-            fontSize: { xs: "35px", sm: "35px", md: "56px" },
-            textAlign: "center",
-            marginTop: "30px",
-            marginBottom: "30px",
-            paddingRight: "0px",
-            "&::before": {
-              content: '"<"',
-            },
-            "&::after": {
-              content: '"/>"',
-            },
-          }}
-        >
-          Skills
-        </Typography>
-      </Box>
+    <>
+      <TitlePage Title={"Skills"} />
 
       <Box
         sx={{
@@ -163,7 +103,7 @@ const SkillsComponent = () => {
           );
         })}
       </Box>
-    </Box>
+    </>
   );
 };
 

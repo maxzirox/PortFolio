@@ -1,9 +1,10 @@
 import React from 'react'
 import ProjectsComponent from '../components/ProjectsComponent'
+import { Background } from '../partials/Background'
 
 const Projects = () => {
   return (
-    <ProjectsComponent />
+    <Background Component={ProjectsComponent} />
   )
 }
 
