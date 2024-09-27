@@ -32,10 +32,10 @@ const ProjectsComponent = () => {
       image: 'https://firebasestorage.googleapis.com/v0/b/portfolio-9508a.appspot.com/o/eymlimitada.jpg?alt=media&token=f74e651b-c563-4587-9619-1b045ea56b1c',
     },
     {
-      title: 'Proyecto 2',
-      description: 'Descripción del proyecto 2.',
-      url: 'https://github.com/usuario/proyecto2',
-      image: 'https://via.placeholder.com/300',
+      title: 'Proyecto WellnessApp',
+      description: 'Proyecto ecommerce creado con react, utilizando material-UI, react-router-dom, context, sweet alert y swiper. Conectado una base de datos en Firebase para la persistencia de datos.',
+      url: 'https://wellnessapp.onrender.com',
+      image: 'https://firebasestorage.googleapis.com/v0/b/wellnesgym-47cea.appspot.com/o/wellnesGym.gif?alt=media&token=ea58bc73-0c6e-4612-b47e-1d1eabeb941b',
     },
     // Agrega más proyectos aquí
   ];
