@@ -1,23 +1,30 @@
-# Usa una imagen oficial de Node.js como base
-FROM node:18-alpine
+# Usa una imagen de Node.js para compilar la aplicación
+FROM node:18-alpine AS builder
 
-# Establece el directorio de trabajo dentro del contenedor
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos package.json y package-lock.json
+# Copia los archivos necesarios para instalar dependencias y compilar
 COPY package*.json ./
 
 # Instala las dependencias
 RUN npm install
 
-# Copia el resto de los archivos del proyecto
+# Copia el resto de los archivos y ejecuta la build
 COPY . .
-
-# Compila el proyecto (asumiendo que es una aplicación Vite)
 RUN npm run build
 
-# Expone el puerto en el que se servirá tu aplicación
+# Usa una imagen de Nginx para servir la aplicación
+FROM nginx:stable-alpine
+
+# Copia la configuración de Nginx personalizada
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copia los archivos generados por Vite al directorio de Nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expone el puerto 80 para acceder a la aplicación
 EXPOSE 80
 
-# Usa Vite para servir la aplicación
-CMD ["npm", "run", "preview"]
+# Comando por defecto para iniciar Nginx
+CMD ["nginx", "-g", "daemon off;"]
