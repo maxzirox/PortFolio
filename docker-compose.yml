@@ -1,15 +1,13 @@
-
-
 services:
-  nginx:
-    image: nginx:latest
-    ports:
-      - "81:81"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf  # Archivo de configuración de Nginx
-      - ./build:/usr/share/nginx/html  # Archivos de tu portafolio
-    networks:
-      - webnet
+  portfolio:
+    image: node:14
+    container_name: portfolio_build
+    working_dir: /app
+    environment:
+      - NODE_ENV=production
+    build:
+      context: https://github.com/maxzirox/PortFolio  # Tu repositorio de GitHub
+      dockerfile: Dockerfile
+    command: sh -c "npm install && npm run build"
+    restart: on-failure
 
-networks:
-  webnet:
