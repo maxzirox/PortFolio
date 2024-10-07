@@ -21,3 +21,5 @@ COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
 
 # Exponer el puerto 8080
 EXPOSE 8080
+
+CMD ["npm", "run", "dev"]
