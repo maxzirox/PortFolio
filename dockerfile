@@ -11,7 +11,7 @@ RUN npm install
 
 # Copia el resto de los archivos y ejecuta la build
 COPY . .
-RUN npm run build
+RUN npm run build  # Asegúrate de que este comando genera la carpeta 'dist'
 
 # Usa Nginx para servir la aplicación
 FROM nginx:alpine
@@ -23,7 +23,7 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expone el puerto en el que Nginx escucha
-EXPOSE 8080
+EXPOSE 80  # Asegúrate de que esto esté en línea con tu docker-compose.yml
 
 # Comando para ejecutar Nginx
 CMD ["nginx", "-g", "daemon off;"]
