@@ -1,20 +1,24 @@
-FROM node:16  # O la versión que necesites
+# Usa una imagen de Node.js para compilar la aplicación
+FROM node:18-alpine AS builder
 
-# Crear el directorio de trabajo
 WORKDIR /app
 
-# Copiar los archivos necesarios
-COPY package.json package-lock.json ./
+# Copia los archivos de dependencias
+COPY package*.json ./
+
+# Instala las dependencias
 RUN npm install
 
-# Copiar el resto de la aplicación
+# Copia el resto de los archivos y ejecuta la build
 COPY . .
-
-# Construir la aplicación
 RUN npm run build
 
-# Exponer el puerto que se va a utilizar
+# Segunda etapa: usar una imagen de Apache
+FROM httpd:2.4
+
+# Copia los archivos construidos al directorio de Apache
+COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
+
+# Exponer el puerto 8080
 EXPOSE 8080
 
-# Comando para servir la aplicación
-CMD ["npm", "run", "preview"]
