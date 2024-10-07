@@ -11,19 +11,16 @@ RUN npm install
 
 # Copia el resto de los archivos y ejecuta la build
 COPY . .
-RUN npm run build  # Asegúrate de que este comando genera la carpeta 'dist'
+RUN npm run build
 
-# Usa Nginx para servir la aplicación
-FROM nginx:alpine
+# Usa una imagen de Apache para servir la aplicación
+FROM httpd:alpine
 
-# Copia los archivos de la carpeta de build al directorio de Nginx
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copia tu archivo de configuración de Apache
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
 
-# Copia el archivo de configuración de Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copia los archivos generados por Vite al directorio de Apache
+COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
 
-# Expone el puerto en el que Nginx escucha
-EXPOSE 80  # Asegúrate de que esto esté en línea con tu docker-compose.yml
-
-# Comando para ejecutar Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Expone el puerto 8080
+EXPOSE 8080
