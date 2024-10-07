@@ -16,11 +16,11 @@ RUN npm run build
 # Segunda etapa: usar una imagen de Apache
 FROM httpd:2.4
 
+# Habilitar el MPM event
+RUN echo "LoadModule mpm_event_module modules/mod_mpm_event.so" >> /usr/local/apache2/conf/httpd.conf
+
 # Copia los archivos construidos al directorio de Apache
 COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
-
-# Establecer el nombre del servidor para evitar advertencias
-COPY httpd.conf /usr/local/apache2/conf/httpd.conf
 
 # Exponer el puerto 8080
 EXPOSE 8080
