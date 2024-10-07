@@ -13,3 +13,17 @@ RUN npm install
 COPY . .
 RUN npm run build
 
+# Usa Nginx para servir la aplicación
+FROM nginx:alpine
+
+# Copia los archivos de la carpeta de build al directorio de Nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Copia el archivo de configuración de Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expone el puerto en el que Nginx escucha
+EXPOSE 8080
+
+# Comando para ejecutar Nginx
+CMD ["nginx", "-g", "daemon off;"]
