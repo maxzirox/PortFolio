@@ -13,14 +13,11 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Usa una imagen de Apache para servir la aplicación
-FROM httpd:alpine
+# Segunda etapa: usar una imagen de Apache
+FROM httpd:2.4
 
-# Copia tu archivo de configuración de Apache
-COPY httpd.conf /usr/local/apache2/conf/httpd.conf
-
-# Copia los archivos generados por Vite al directorio de Apache
+# Copia los archivos construidos al directorio de Apache
 COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
 
-# Expone el puerto 8080
+# Exponer el puerto 8080
 EXPOSE 8080
