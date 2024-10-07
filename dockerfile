@@ -19,5 +19,8 @@ FROM httpd:2.4
 # Copia los archivos construidos al directorio de Apache
 COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
 
+# Establecer el nombre del servidor para evitar advertencias
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+
 # Exponer el puerto 8080
 EXPOSE 8080
