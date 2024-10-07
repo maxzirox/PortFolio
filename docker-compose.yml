@@ -7,4 +7,3 @@ services:
       - "8080:8080"  # Mapeo de puertos
     volumes:
       - .:/app  # Mapea el directorio actual al contenedor
-    command: npm run preview  # O puedes omitir esta línea si ya está en el Dockerfile
