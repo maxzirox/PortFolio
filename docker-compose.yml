@@ -1,14 +1,10 @@
-
 services:
-  portfolio:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"  # Asegúrate de que el puerto sea el correcto
-    networks:
-      - portfolio-network
-
-networks:
-  portfolio-network:
-    driver: bridge
+      - "8080:8080"  # Mapeo de puertos
+    volumes:
+      - .:/app  # Mapea el directorio actual al contenedor
+    command: npm run preview  # O puedes omitir esta línea si ya está en el Dockerfile
