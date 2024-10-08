@@ -4,7 +4,7 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copia los archivos de dependencias
-COPY package*.json ./
+COPY package*.json .
 
 # Instala las dependencias
 RUN npm install
@@ -24,3 +24,5 @@ COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
 
 # Exponer el puerto 8080
 EXPOSE 8080
+
+CMD [ "npm", "run", "dev" ]
