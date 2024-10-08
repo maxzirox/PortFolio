@@ -23,6 +23,6 @@ RUN echo "LoadModule mpm_event_module modules/mod_mpm_event.so" >> /usr/local/ap
 COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/
 
 # Exponer el puerto 8080
-EXPOSE 8080
+EXPOSE 3000
 
 CMD [ "npm", "run", "dev" ]

@@ -4,6 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"  # Mapeo de puertos
+      - "3000:3000"  # Mapeo de puertos
     volumes:
       - .:/app  # Mapea el directorio actual al contenedor
