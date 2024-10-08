@@ -1,3 +1,4 @@
+version: "3.8"
 services:
   app:
     build:
@@ -6,4 +7,17 @@ services:
     ports:
       - "3000:3000"  # Mapeo de puertos
     volumes:
-      - .:/app  # Mapea el directorio actual al contenedor
+      - .:/app
+    environment:
+      - NODE_ENV=production
+
+  apache:
+    image: httpd:2.4
+    container_name: apache-server
+    depends_on:
+      - app
+    ports:
+      - "80:80"  # Exponer el puerto 80 de Apache
+    volumes:
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+    restart: always
